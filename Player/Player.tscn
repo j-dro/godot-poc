@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ltes5eii8at4"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_abc123"]
+[ext_resource type="Texture2D" uid="uid://c03c1r6oikxet" path="res://Player/icons8-leprechaun-64.png" id="2_0jgib"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4tqx"]
+radius = 33.57
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_abc123")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q4tqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_0jgib")

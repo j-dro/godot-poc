@@ -25,6 +25,10 @@ README.md
 ```
 > Scenes (`.tscn`) are created in the editor following the steps below. Keeping scenes editor-made makes it easier to tweak in Godot.
 
+## Graphics
+- [Leprechaun](https://icons8.com/icon/5StxIRWYEKQI/leprechaun) icon by [Icons8](https://icons8.com)
+- [Coin](https://icons8.com/icon/OFHwDWASQWmX/coin) icon by [Icons8](https://icons8.com)
+
 ---
 
 ## Quick Start (5–10 minutes)
@@ -97,6 +101,26 @@ README.md
   - You likely didn’t set `Main.tscn` as **Main Scene**.
 - **Can’t move:**  
   - If you removed the `_ensure_actions()` helper in `Main.gd`, add the actions manually in Project Settings → Input Map.
+
+---
+
+## Running Web Export Locally
+
+**Exporting in Godot:**
+1. **Project → Export → Web**
+2. Set **Export Path** to: `exports/web/index.html`
+3. **Export**
+
+**Testing locally:**
+
+```bash
+cd exports/web
+python3 server.py
+```
+
+Then visit **http://localhost:8000** in your browser.
+
+> **Note:** Godot 4 web exports require specific headers (Cross-Origin Isolation). The included `server.py` automatically sets these headers. Regular Python `http.server` won't work.
 
 ---
 

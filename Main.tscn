@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://c66pdudpl2tsl"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_48oo6"]
+[ext_resource type="PackedScene" uid="uid://dgy4u6v2qcrtl" path="res://Coin/Coin.tscn" id="2_1d8p0"]
+[ext_resource type="PackedScene" uid="uid://ltes5eii8at4" path="res://Player/Player.tscn" id="3_ksigp"]
+[ext_resource type="PackedScene" uid="uid://gq2jtbndvbkh" path="res://UI/UI.tscn" id="4_sji7k"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="5_547ck"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_48oo6")
+coin_scene = ExtResource("2_1d8p0")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Player" parent="World" instance=ExtResource("3_ksigp")]
+position = Vector2(599, 332)
+
+[node name="UI" parent="." instance=ExtResource("4_sji7k")]
+script = ExtResource("5_547ck")
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
