@@ -41,14 +41,14 @@ jobs:
       - name: Download Godot
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          wget -q https://downloads.tuxfamily.org/godotengine/4.1.4/Godot_v4.1.4-stable_linux.x86_64.zip
+          wget -q https://github.com/godotengine/godot/releases/download/4.1.4-stable/Godot_v4.1.4-stable_linux.x86_64.zip
           unzip -q Godot_v4.1.4-stable_linux.x86_64.zip
           chmod +x Godot_v4.1.4-stable_linux.x86_64
 
       - name: Download Godot Export Templates
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          wget -q https://downloads.tuxfamily.org/godotengine/4.1.4/Godot_v4.1.4-stable_export_templates.tpz
+          wget -q https://github.com/godotengine/godot/releases/download/4.1.4-stable/Godot_v4.1.4-stable_export_templates.tpz
           mkdir -v -p ~/.local/share/godot/export_templates/4.1.4.stable
           unzip -q Godot_v4.1.4-stable_export_templates.tpz
           mv templates/* ~/.local/share/godot/export_templates/4.1.4.stable/
