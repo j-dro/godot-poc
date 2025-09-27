@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  export-web:
+    runs-on: ubuntu-20.04
+    name: Web Export
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -qqq wget unzip
+
+      - name: Download Godot
+        run: |
+          wget -q https://downloads.tuxfamily.org/godotengine/4.1.4/Godot_v4.1.4-stable_linux.x86_64.zip
+          unzip -q Godot_v4.1.4-stable_linux.x86_64.zip
+
+      - name: Download Godot Export Templates
+        run: |
+          wget -q https://downloads.tuxfamily.org/godotengine/4.1.4/Godot_v4.1.4-stable_export_templates.tpz
+          mkdir -v -p ~/.local/share/godot/export_templates/4.1.4.stable
+          unzip -q Godot_v4.1.4-stable_export_templates.tpz
+          mv templates/* ~/.local/share/godot/export_templates/4.1.4.stable/
+
+      - name: Web Build
+        run: |
+          mkdir -p exports/web
+          ./Godot_v4.1.4-stable_linux.x86_64 --headless --verbose --export-release "Web" exports/web/index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: exports/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
