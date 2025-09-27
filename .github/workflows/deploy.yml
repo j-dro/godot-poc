@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   export-web:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Web Export
     steps:
       - name: Checkout
