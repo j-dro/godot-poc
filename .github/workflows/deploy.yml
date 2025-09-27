@@ -24,17 +24,29 @@ jobs:
         with:
           lfs: true
 
+      - name: Cache Godot
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            Godot_v4.1.4-stable_linux.x86_64
+            ~/.local/share/godot/export_templates/4.1.4.stable
+          key: godot-4.1.4-${{ runner.os }}
+
       - name: Setup
         run: |
           sudo apt-get update -qq
           sudo apt-get install -qqq wget unzip
 
       - name: Download Godot
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           wget -q https://downloads.tuxfamily.org/godotengine/4.1.4/Godot_v4.1.4-stable_linux.x86_64.zip
           unzip -q Godot_v4.1.4-stable_linux.x86_64.zip
+          chmod +x Godot_v4.1.4-stable_linux.x86_64
 
       - name: Download Godot Export Templates
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           wget -q https://downloads.tuxfamily.org/godotengine/4.1.4/Godot_v4.1.4-stable_export_templates.tpz
           mkdir -v -p ~/.local/share/godot/export_templates/4.1.4.stable
