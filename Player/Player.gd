@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 260.0
 
 var enabled: bool = true
+@onready var sprite: Sprite2D = $CollisionShape2D/Sprite2D
 
 func _physics_process(_delta: float) -> void:
 	if not enabled:
@@ -16,6 +17,11 @@ func _physics_process(_delta: float) -> void:
 	velocity = dir * speed
 	move_and_slide()
 	_clamp_to_viewport()
+
+	if dir.x > 0:
+		sprite.flip_h = true
+	elif dir.x < 0:
+		sprite.flip_h = false
 
 func _clamp_to_viewport() -> void:
 	var rect := get_viewport_rect()
