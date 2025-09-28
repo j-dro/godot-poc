@@ -9,6 +9,7 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 71.0
 offset_bottom = 36.0
+theme_override_font_sizes/font_size = 44
 text = "Score: 0"
 
 [node name="TimeLabel" type="Label" parent="."]
@@ -20,6 +21,7 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 36.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 44
 text = "Time: 60"
 horizontal_alignment = 2
 
@@ -48,5 +50,3 @@ grow_vertical = 2
 text = "Game Over — Press Space or Restart"
 
 [node name="MobileControls" parent="." instance=ExtResource("1_mobile")]
-grow_horizontal = 2
-grow_vertical = 2
