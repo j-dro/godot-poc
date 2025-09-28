@@ -24,14 +24,13 @@ func _ready() -> void:
 	if DEBUG_SHOW_MOBILE_CONTROLS:
 		_add_button_backgrounds()
 
-	# Debug: Print visibility state
-	print("MobileControls visible: ", visible)
-	print("Is mobile device: ", _is_mobile_device())
-	print("MobileControls position: ", position)
-	print("MobileControls size: ", size)
-	print("Viewport size: ", get_viewport().get_visible_rect().size)
+	# Log mobile controls initialization
+	Logger.ui_debug("MobileControls visible: %s" % visible)
+	Logger.ui_debug("Is mobile device: %s" % _is_mobile_device())
+	Logger.ui_debug("MobileControls position: %s, size: %s" % [position, size])
+	Logger.system_info("Viewport size: %s" % get_viewport().get_visible_rect().size)
 
-	# Debug all buttons
+	# Log button status
 	var buttons = [
 		["UpButton", up_button],
 		["DownButton", down_button],
@@ -41,13 +40,12 @@ func _ready() -> void:
 	]
 
 	for button_info in buttons:
-		var name = button_info[0]
+		var button_name = button_info[0]
 		var button = button_info[1]
 		if button:
-			print(name, " global_position: ", button.global_position)
-			print(name, " visible: ", button.visible)
+			Logger.ui_debug("%s global_position: %s, visible: %s" % [button_name, button.global_position, button.visible])
 		else:
-			print(name, " is null!")
+			Logger.error("UI", "%s is null!" % button_name)
 
 func _is_mobile_device() -> bool:
 	# Check if we're running on a mobile platform or web with touch
@@ -83,9 +81,9 @@ func _on_debug_button_input(event: InputEvent, action: String) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			# Simulate the action press
 			Input.action_press(action)
-			print("Debug: Pressed ", action)
+			Logger.input_debug("Pressed %s" % action)
 	elif event is InputEventMouseButton and not event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			# Simulate the action release
 			Input.action_release(action)
-			print("Debug: Released ", action)
+			Logger.input_debug("Released %s" % action)

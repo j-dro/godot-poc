@@ -9,6 +9,9 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_48oo6")
 coin_scene = ExtResource("2_1d8p0")
+game_length_seconds = null
+spawn_interval = null
+spawn_margin = null
 
 [node name="World" type="Node2D" parent="."]
 

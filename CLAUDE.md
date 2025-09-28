@@ -51,3 +51,11 @@ Since this is a Godot project, most development happens in the Godot editor. Com
 - Always test scene files in Godot editor immediately after creation
 - Prefer simple positioning over anchor presets when possible for UI elements
 - Verify scene file syntax and node hierarchy before integration
+
+### Logging System
+- Centralized Logger singleton available globally as `Logger`
+- Log levels: DEBUG, INFO, WARN, ERROR
+- Auto-configures based on build type (debug vs production)
+- Convenience methods: `Logger.game_info()`, `Logger.ui_debug()`, `Logger.input_debug()`, `Logger.system_info()`
+- Example usage: `Logger.game_info("Game started - Score: %d" % score)`
+- File logging can be enabled by setting `Logger.log_to_file = true`

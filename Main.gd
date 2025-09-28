@@ -47,6 +47,7 @@ func _start_game() -> void:
 	player.enabled = true
 	game_timer.start()
 	spawn_timer.start()
+	Logger.game_info("Game started - Duration: %ds, Spawn interval: %fs" % [game_length_seconds, spawn_interval])
 
 func _game_over() -> void:
 	state = &"gameover"
@@ -54,6 +55,7 @@ func _game_over() -> void:
 	spawn_timer.stop()
 	player.enabled = false
 	ui.show_game_over()
+	Logger.game_info("Game over - Final score: %d" % score)
 
 func _on_second_tick() -> void:
 	time_left -= 1
