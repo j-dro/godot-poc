@@ -31,6 +31,7 @@ jobs:
           path: |
             Godot_v4.1.4-stable_linux.x86_64
             ~/.local/share/godot/export_templates/4.1.4.stable
+            coi-serviceworker.js
           key: godot-4.1.4-${{ runner.os }}
 
       - name: Setup
@@ -58,11 +59,19 @@ jobs:
           mkdir -p exports/web
           ./Godot_v4.1.4-stable_linux.x86_64 --headless --verbose --export-release "Web" exports/web/index.html
 
-      - name: Add headers for GitHub Pages
+      - name: Download COI ServiceWorker
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          echo "/*" > exports/web/_headers
-          echo "  Cross-Origin-Embedder-Policy: require-corp" >> exports/web/_headers
-          echo "  Cross-Origin-Opener-Policy: same-origin" >> exports/web/_headers
+          wget -q https://cdn.jsdelivr.net/npm/coi-serviceworker@0.1.7/coi-serviceworker.min.js -O coi-serviceworker.js
+
+      - name: Add Cross-Origin Isolation for GitHub Pages
+        run: |
+          # Copy cached or newly downloaded serviceworker
+          cp coi-serviceworker.js exports/web/
+
+          # Add service worker registration to index.html
+          sed -i '/<head>/a\
+          <script src="coi-serviceworker.js"></script>' exports/web/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
