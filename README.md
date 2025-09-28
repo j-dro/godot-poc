@@ -28,7 +28,6 @@ README.md
 ## Graphics
 - [Leprechaun](https://icons8.com/icon/5StxIRWYEKQI/leprechaun) icon by [Icons8](https://icons8.com)
 - [Coin](https://icons8.com/icon/OFHwDWASQWmX/coin) icon by [Icons8](https://icons8.com)
-
 ---
 
 ## Quick Start (5–10 minutes)

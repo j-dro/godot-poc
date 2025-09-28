@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1yxb8k5fhxkw"]
+
+[ext_resource type="Script" path="res://UI/MobileControls.gd" id="1_1k8v8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4"]
+size = Vector2(40, 40)
+
+[node name="MobileControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_1k8v8")
+
+[node name="DPad" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = -20.0
+mouse_filter = 2
+
+[node name="UpButton" type="TouchScreenButton" parent="DPad"]
+position = Vector2(60, 20)
+shape = SubResource("RectangleShape2D_1")
+action = "move_up"
+
+[node name="Label" type="Label" parent="DPad/UpButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "↑"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DownButton" type="TouchScreenButton" parent="DPad"]
+position = Vector2(60, 120)
+shape = SubResource("RectangleShape2D_2")
+action = "move_down"
+
+[node name="Label" type="Label" parent="DPad/DownButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "↓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftButton" type="TouchScreenButton" parent="DPad"]
+position = Vector2(10, 70)
+shape = SubResource("RectangleShape2D_3")
+action = "move_left"
+
+[node name="Label" type="Label" parent="DPad/LeftButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "←"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="DPad"]
+position = Vector2(110, 70)
+shape = SubResource("RectangleShape2D_4")
+action = "move_right"
+
+[node name="Label" type="Label" parent="DPad/RightButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "→"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TouchScreenButton" parent="."]
+position = Vector2(1052, 588)
+shape = SubResource("RectangleShape2D_4")
+action = "restart"
+
+[node name="Label" type="Label" parent="RestartButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1

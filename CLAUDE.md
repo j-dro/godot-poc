@@ -44,3 +44,10 @@ Since this is a Godot project, most development happens in the Godot editor. Com
 - Input actions are programmatically defined for cross-platform compatibility
 - Game state managed through timer nodes and signal connections
 - Coin spawning uses random viewport positioning with safe margins
+
+### Scene File Development
+- When creating .tscn files manually, keep layouts simple with basic offsets rather than complex anchors
+- TouchScreenButton nodes should use straightforward positioning (offset_left/top/right/bottom)
+- Always test scene files in Godot editor immediately after creation
+- Prefer simple positioning over anchor presets when possible for UI elements
+- Verify scene file syntax and node hierarchy before integration
