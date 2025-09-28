@@ -58,6 +58,12 @@ jobs:
           mkdir -p exports/web
           ./Godot_v4.1.4-stable_linux.x86_64 --headless --verbose --export-release "Web" exports/web/index.html
 
+      - name: Add headers for GitHub Pages
+        run: |
+          echo "/*" > exports/web/_headers
+          echo "  Cross-Origin-Embedder-Policy: require-corp" >> exports/web/_headers
+          echo "  Cross-Origin-Opener-Policy: same-origin" >> exports/web/_headers
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
