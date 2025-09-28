@@ -1,7 +1,7 @@
 extends Control
 
 # Debug flag to force show mobile controls on desktop for testing
-const DEBUG_SHOW_MOBILE_CONTROLS = false
+const DEBUG_SHOW_MOBILE_CONTROLS: bool = false
 
 @onready var up_button: TouchScreenButton = $DPad/UpButton
 @onready var down_button: TouchScreenButton = $DPad/DownButton
